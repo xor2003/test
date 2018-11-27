@@ -26,8 +26,15 @@ std::ostream& operator<< (std::ostream& stream, const My::Matrix<T>& m)
 namespace My
 {
 
+class Prototype
+{
+public:
+    virtual Prototype* clone() = 0;
+};
+
 template <class T> // value type
-class Matrix     // 2D Martix
+class Matrix:      // 2D Martix
+	public Prototype
 {
 public:
     Matrix()
@@ -88,7 +95,7 @@ public:
         return stream;
     }
 
-    virtual Matrix* clone()
+    Matrix* clone() override
     {
 	return new Matrix(*this);
     }
