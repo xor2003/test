@@ -32,7 +32,7 @@ namespace My
 //
 ---------------------------------------------------------------------- */
 
-template <class K, class V, typename F = std::less<ptrdiff_t> >
+template <class K, class V, typename F = std::less<typename K::value_type> >
 struct Sorter
 {
 
@@ -44,7 +44,7 @@ struct Sorter
 
     sort_proxy() {}
 
-    operator ptrdiff_t() //provides value for comparision
+    operator typename K::value_type() //provides value for comparision
     {
         return *k;
     }
