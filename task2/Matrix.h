@@ -32,6 +32,12 @@ public:
     virtual Prototype* clone() = 0;
 };
 
+template <class T>
+void operator<<(Matrix<T>& m, const std::vector<T>& row)
+    {
+        m.Insert_Row(row);
+    }
+
 template <class T> // value type
 class Matrix:      // 2D Martix
 	public Prototype
@@ -50,7 +56,9 @@ public:
     {
     }
 
-    virtual void Insert_Row(const std::vector<T>& row)
+    friend void operator<<(Matrix& m, const std::vector<T>& row);
+
+    void operator<<(const std::vector<T>& row);
     {
         if (row.size() != 0) m_data.push_back(row);
     }

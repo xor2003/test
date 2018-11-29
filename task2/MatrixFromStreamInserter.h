@@ -45,7 +45,7 @@ public:
             try
             {
                 std::transform(fields.begin(), fields.end(), doubles.begin(), F());
-                matrix->Insert_Row(doubles);
+                matrix << doubles;
             }
             catch (...)
             {
